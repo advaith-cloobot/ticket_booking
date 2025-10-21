@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: movie-ticket-postgres
+    environment:
+      POSTGRES_DB: movie_ticket_db
+      POSTGRES_USER: movie_user
+      POSTGRES_PASSWORD: movie_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
